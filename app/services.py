@@ -8,14 +8,14 @@ def createcountry(data):
     conn.myconn._open_connection()
     mycursor = conn.myconn.cursor()
 
-    countryId = data['CountryId']
+    countryid = data['CountryId']
     name = data['Name']
     population = data['Population']
     continent = data['Continent']
 
     #Execute the SQL
     mysql = "INSERT INTO Country (CountryId, Name, Population, Continent) VALUES (%s, %s, %s, %s)"
-    values = (countryId, name, population, continent)
+    values = (countryid, name, population, continent)
     mycursor.execute(mysql, values)
 
     #Close connection
