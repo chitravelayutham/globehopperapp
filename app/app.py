@@ -7,27 +7,27 @@ import country
 #Using Flask framework
 app = Flask(__name__)
 
-#Create - POST API
+#Create - POST api
 @app.post('/countries')
-def createcountryAPI():
+def createcountryapi():
     data = request.json
-    return country.createcountryView(data)
+    return country.createcountryview(data)
 
-#Read - GET API
+#Read - GET api
 @app.get('/countries')
-def getallcountriesAPI():
-    return country.getallcountriesView()
+def getallcountriesapi():
+    return country.getallcountriesview()
 
-#Update - PUT API
+#Update - PUT api
 @app.put('/countries/<int:country_id>')  #Query string parameter
-def updatecountryAPI(country_id):
+def updatecountryapi(country_id):
     data = request.json
-    return country.updatecountryView(country_id, data)
+    return country.updatecountryview(country_id, data)
 
-#Delete - DELETE API
+#Delete - DELETE api
 @app.delete('/countries/<int:country_id>')  #Query string parameter
-def deletecountryAPI(country_id):
-    return country.deletecountryView(country_id)
+def deletecountryapi(country_id):
+    return country.deletecountryview(country_id)
 
 
 

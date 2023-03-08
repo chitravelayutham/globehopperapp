@@ -25,7 +25,7 @@ def createcountry(data):
 
 
 #Gets all records from Country table using SQL
-def allcountriesService():
+def allcountriesservice():
     #OPen connection
     conn.myconn._open_connection()
     mycursor = conn.myconn.cursor()
@@ -42,7 +42,7 @@ def allcountriesService():
 
 
 #Update a country record
-def updateCountryService(country_id, data):
+def updatecountryservice(country_id, data):
     #OPen connection
     conn.myconn._open_connection()
     mycursor = conn.myconn.cursor()
@@ -63,7 +63,7 @@ def updateCountryService(country_id, data):
 
 
 #Delete a country record
-def deleteCountryService(country_id):
+def deletecountryservice(country_id):
     #OPen connection
     conn.myconn._open_connection()
     mycursor = conn.myconn.cursor()

@@ -5,13 +5,13 @@ import services
 
 #Function to get all countries and return as a JSON object
 #Create a country record
-def createcountryView(data):
-    services.createcountryService(data)
+def createcountryview(data):
+    services.createcountryservice(data)
     return jsonify({'message' : 'Data inserted successfully'})
 
 #Get all countries
-def getallcountriesView():
-    results = services.allcountriesService()
+def getallcountriesview():
+    results = services.allcountriesservice()
 
     data = []
     #Converted a list to dict
@@ -27,12 +27,12 @@ def getallcountriesView():
 
 
 #Update a country record
-def updatecountryView(country_id, data):
-    services.updateCountryService(country_id, data)
+def updatecountryview(country_id, data):
+    services.updatecountryservice(country_id, data)
     return jsonify({'message' : 'Data updated successfully'})
 
 
 #Delete a country record
-def deletecountryView(country_id):
-    services.deleteCountryService(country_id)
+def deletecountryview(country_id):
+    services.deletecountryservice(country_id)
     return jsonify({'message' : 'Data deleted successfully'})
