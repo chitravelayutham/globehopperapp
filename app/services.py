@@ -25,7 +25,7 @@ def createcountryservice(data):
     #Execute the SQL
     mysql = "INSERT INTO Country (CountryId, Name, Population, Continent) VALUES (%s, %s, %s, %s)"
     values = (countryid, name, population, continent)
-    conn.myconn.cursor().execute(mysql, values)
+    mycursor.execute(mysql, values)
 
     #Close connection
     db_close_connection()
