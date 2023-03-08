@@ -5,8 +5,8 @@ import services
 
 #Function to get all countries and return as a JSON object
 #Create a country record
-def createcountry(data):
-    services.createcountry(data)
+def createcountryView(data):
+    services.createcountryService(data)
     return jsonify({'message' : 'Data inserted successfully'})
 
 #Get all countries
@@ -24,3 +24,15 @@ def getallcountriesView():
         })
 
     return jsonify(data)
+
+
+#Update a country record
+def updatecountryView(country_id, data):
+    services.updateCountryService(country_id, data)
+    return jsonify({'message' : 'Data updated successfully'})
+
+
+#Delete a country record
+def deletecountryView(country_id):
+    services.deleteCountryService(country_id)
+    return jsonify({'message' : 'Data deleted successfully'})

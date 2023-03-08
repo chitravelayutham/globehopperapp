@@ -41,4 +41,39 @@ def allcountriesService():
     return results
 
 
+#Update a country record
+def updateCountryService(country_id, data):
+    #OPen connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
 
+    name = data['Name']
+    population = data['Population']
+    continent = data['Continent']
+
+    #Execute the SQL
+    mysql = "UPDATE Country SET Name = %s, Population=%s, Continent=%s WHERE CountryId = %s"
+    values = (name, population, continent, country_id)
+    mycursor.execute(mysql, values)
+
+    #Close connection
+    mycursor.close()
+    mycursor.close()
+    conn.myconn.close()
+
+
+#Delete a country record
+def deleteCountryService(country_id):
+    #OPen connection
+    conn.myconn._open_connection()
+    mycursor = conn.myconn.cursor()
+
+    print(country_id)
+    #Execute the SQL
+    mysql = "DELETE FROM Country WHERE CountryId = %s"
+    values = [(country_id)]
+    mycursor.execute(mysql, values)
+
+    #Close connection
+    mycursor.close()
+    conn.myconn.close()
