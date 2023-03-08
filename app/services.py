@@ -2,12 +2,20 @@
 from flask import Flask, request, jsonify
 import conn
 
+def db_open_connection():
+    conn.myconn._open_connection()
+    global mycursor 
+    mycursor = conn.myconn.cursor() 
+
+def db_close_connection():
+    mycursor.close()
+    conn.myconn.close() 
+
 ############################################# COUNTRY ########################################
 #Create a country record
-def createcountry(data):
+def createcountryservice(data):
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     countryid = data['CountryId']
     name = data['Name']
@@ -17,36 +25,31 @@ def createcountry(data):
     #Execute the SQL
     mysql = "INSERT INTO Country (CountryId, Name, Population, Continent) VALUES (%s, %s, %s, %s)"
     values = (countryid, name, population, continent)
-    mycursor.execute(mysql, values)
+    conn.myconn.cursor().execute(mysql, values)
 
     #Close connection
-    mycursor.close()
-    conn.myconn.close()
+    db_close_connection()
     
 
 
 #Gets all records from Country table using SQL
 def allcountriesservice():
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     #Execute the SQL
     mycursor.execute("SELECT * FROM Country")
     results = mycursor.fetchall()
 
     #Close connection
-    mycursor.close()
-    conn.myconn.close()
-    
+    db_close_connection()
     return results
 
 
 #Update a country record
 def updatecountryservice(country_id, data):
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     name = data['Name']
     population = data['Population']
@@ -58,16 +61,12 @@ def updatecountryservice(country_id, data):
     mycursor.execute(mysql, values)
 
     #Close connection
-    mycursor.close()
-    mycursor.close()
-    conn.myconn.close()
-
+    db_close_connection()
 
 #Delete a country record
 def deletecountryservice(country_id):
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     print(country_id)
     #Execute the SQL
@@ -76,15 +75,13 @@ def deletecountryservice(country_id):
     mycursor.execute(mysql, values)
 
     #Close connection
-    mycursor.close()
-    conn.myconn.close()
+    db_close_connection()
 
 ############################################# CITY ########################################
 #Create a city record
 def createcityservice(data):
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     cityid = data['CityId']
     name = data['Name']
@@ -100,24 +97,21 @@ def createcityservice(data):
     mycursor.execute(mysql, values)
 
     #Close connection
-    mycursor.close()
-    conn.myconn.close()
+    db_close_connection()
     
 
 
 #Gets all records from city table using SQL
 def allcitiesservice():
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     #Execute the SQL
     mycursor.execute("SELECT * FROM city")
     results = mycursor.fetchall()
 
     #Close connection
-    mycursor.close()
-    conn.myconn.close()
+    db_close_connection()
     
     return results
 
@@ -125,8 +119,7 @@ def allcitiesservice():
 #Update a city record
 def updatecityservice(city_id, data):
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     name = data['Name']
     countryid = data['CountryId']
@@ -141,16 +134,13 @@ def updatecityservice(city_id, data):
     mycursor.execute(mysql, values)
 
     #Close connection
-    mycursor.close()
-    mycursor.close()
-    conn.myconn.close()
+    db_close_connection()
 
 
 #Delete a city record
 def deletecityservice(city_id):
     #OPen connection
-    conn.myconn._open_connection()
-    mycursor = conn.myconn.cursor()
+    db_open_connection()
 
     #Execute the SQL
     mysql = "DELETE FROM City WHERE CityId = %s"
@@ -158,5 +148,4 @@ def deletecityservice(city_id):
     mycursor.execute(mysql, values)
     print(city_id)
     #Close connection
-    mycursor.close()
-    conn.myconn.close()
+    db_close_connection()
