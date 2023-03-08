@@ -18,7 +18,10 @@ def createcountry():
 def getallcountries():
     return country.getallcountries()
 
-
+#Delete - DELETE API
+@app.delete('/countries/<int:country_id>')  #Query string parameter
+def deletecountry(country_id):
+    return country.deletecountry(country_id)
 
 #Execute on the terminal
 if __name__ == '__main__':
