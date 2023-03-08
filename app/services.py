@@ -25,7 +25,7 @@ def createcountry(data):
 
 
 #Gets all records from Country table using SQL
-def allcountries():
+def allcountriesService():
     #OPen connection
     conn.myconn._open_connection()
     mycursor = conn.myconn.cursor()

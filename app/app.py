@@ -15,8 +15,8 @@ def createcountry():
 
 #Read - GET API
 @app.get('/countries')
-def getallcountries():
-    return country.getallcountries()
+def getallcountriesAPI():
+    return country.getallcountriesView()
 
 #Delete - DELETE API
 @app.delete('/countries/<int:country_id>')  #Query string parameter

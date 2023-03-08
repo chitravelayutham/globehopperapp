@@ -10,8 +10,8 @@ def createcountry(data):
     return jsonify({'message' : 'Data inserted successfully'})
 
 #Get all countries
-def getcountries():
-    results = services.allcountries()
+def getallcountriesView():
+    results = services.allcountriesService()
 
     data = []
     #Converted a list to dict
