@@ -12,14 +12,14 @@ csrf.init_app(app)
 
 #Create - POST API
 @app.post('/countries')
-def createCountry():
+def createcountry():
     data = request.json
-    return country.createCountry(data)
+    return country.createcountry(data)
 
 #Read - GET API
 @app.get('/countries')
-def getAllCountries():
-    return country.getCountries()
+def getallcountries():
+    return country.getallcountries()
 
 
 
