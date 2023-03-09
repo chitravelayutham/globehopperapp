@@ -4,7 +4,7 @@
 from flask import Flask, request, jsonify
 import country, city
 
-#Using Flask framework
+#Using Flask framework for web app
 app = Flask(__name__)
 
 ##########################################  COUNTRY   ###################################################
